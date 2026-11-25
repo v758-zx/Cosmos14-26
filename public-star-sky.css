@@ -1,0 +1,206 @@
+/* Public demo adjustments layered over the final v3-halo layout. */
+:root { --night: #0b1424; --night-2: #101b30; }
+html, body { background: #080f1c; }
+.phone {
+  background:
+    radial-gradient(circle at 67% 23%, rgba(90,121,179,.15), transparent 37%),
+    radial-gradient(ellipse at 16% 75%, rgba(74,101,154,.09), transparent 34%),
+    linear-gradient(180deg, #0d1525 0%, #10192b 50%, #0b1525 100%);
+}
+.aurora { background: radial-gradient(ellipse at 52% 34%,rgba(82,113,174,.14),transparent 45%); }
+.progress-panel { background: linear-gradient(180deg, transparent, rgba(10,19,35,.94) 35%); }
+.memory-sheet, .achievement-sheet { background: rgba(12,20,35,.975); }
+.finale { background: radial-gradient(circle at 48% 28%,rgba(82,111,162,.18),transparent 38%),linear-gradient(180deg,#0d1629,#0a1323); }
+.letter-view { background: radial-gradient(circle at 50% 8%,rgba(230,201,121,.1),transparent 28%),#0c1525; }
+.star-index { font-size: 10px; line-height: 1.4; letter-spacing: .05em; }
+.secret-star-label { font-size: 10px; line-height: 1.4; letter-spacing: .05em; }
+.cake small { font-size: 11px; }
+.brand { font-size: clamp(10px, 3.1vw, 13px); letter-spacing: .08em; white-space: nowrap; }
+@media (max-width: 350px) {
+  .brand { font-size: 10px; letter-spacing: .035em; }
+  .topbar { padding-left: 16px; padding-right: 13px; }
+}
+.message-box textarea {
+  min-height: 39px;
+  height: 39px;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.message-box.all-secrets textarea { min-height: 39px; height: 39px; }
+.message-box label,
+.message-box.all-secrets label { font-size: 11px; letter-spacing: .035em; color: rgba(227,218,204,.68); }
+.message-box button { font-size: 12px; letter-spacing: .04em; }
+.message-box p { font-size: 10px; color: rgba(211,207,196,.53); }
+.blow-button b { font-size: 12px; letter-spacing: .06em; }
+.intro-copy h1 { font-size: clamp(23px, 6.7vw, 30px); line-height: 1.38; }
+.sky-author {
+  display: block;
+  margin: 5px 0 0 2px;
+  font-family: Georgia, "Songti SC", serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .1em;
+  color: rgba(222,204,168,.66);
+}
+.letter-body .letter-afterword {
+  margin-top: 22px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(106,84,60,.16);
+  color: rgba(69,58,44,.77);
+  font-size: 11px;
+  line-height: 1.9;
+}
+.letter-paper h2 { font-size: 23px; }
+.letter-body > p {
+  margin: 0 0 25px;
+  font-size: 13px;
+  line-height: 2.04;
+}
+.letter-body .letter-signature { margin-top: 30px; margin-bottom: 12px; }
+.letter-body .letter-afterword { font-size: 11px; }
+.memory-2018-card .photo-gallery { margin: 20px 0 20px; }
+.photo-gallery .gallery-main {
+  display: block;
+  width: 100%;
+  height: clamp(155px, 41vh, 280px);
+  object-fit: cover;
+  border: 1px solid rgba(221,203,158,.16);
+  border-radius: 12px;
+  background: #161b29;
+}
+.photo-gallery .gallery-caption {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: .07em;
+  color: rgba(219,209,191,.66);
+  margin: 8px 0 11px;
+}
+.photo-gallery .gallery-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+.photo-gallery .gallery-thumb {
+  display: block;
+  padding: 2px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  opacity: .58;
+  cursor: pointer;
+}
+.photo-gallery .gallery-thumb.active { border-color: var(--gold); opacity: 1; }
+.photo-gallery .gallery-thumb img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; }
+.photo-gallery .gallery-thumb:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.memory-2018-card .memory-social-row { margin-top: 17px; }
+.math-aside { display: block; margin-top: 7px; color: rgba(219,208,188,.6); font-size: 10px; line-height: 1.7; }
+.math-board .equation { white-space: nowrap; font-size: clamp(15px, 4vw, 20px); }
+.math-board .equation input { width: 48px; }
+.letter-journey {
+  background:
+    radial-gradient(ellipse at 75% 24%, rgba(103,130,187,.25), transparent 38%),
+    radial-gradient(ellipse at 17% 68%, rgba(91,112,165,.13), transparent 40%),
+    linear-gradient(155deg, #0b1528 0%, #111d32 57%, #0b1322 100%);
+}
+.letter-journey .journey-ground {
+  bottom: -13%;
+  height: 29%;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(180deg, rgba(45,64,94,.025),rgba(10,16,29,.64));
+  box-shadow: none;
+}
+.letter-journey .journey-sky { opacity: .8; }
+.letter-journey .journey-sky::before,
+.letter-journey .journey-sky::after {
+  width: 78%;
+  height: 84px;
+  border-radius: 60% 40% 55% 45%;
+  background: radial-gradient(ellipse at center,rgba(181,192,217,.15),rgba(160,175,205,.025) 65%,transparent 80%);
+  filter: blur(26px);
+  animation: journey-cloud 18s linear infinite;
+}
+.letter-journey .journey-sky::before { left: -50%; top: 29%; }
+.letter-journey .journey-sky::after { left: -60%; top: 53%; animation-duration: 24s; animation-delay: -8s; }
+.letter-journey .journey-caption { top: 21%; color: rgba(237,225,206,.81); font-size: 12px; letter-spacing: .08em; text-shadow: 0 0 21px rgba(215,191,145,.18); }
+.letter-meteor {
+  position: absolute;
+  z-index: 6;
+  left: -15%;
+  top: 3%;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  color: #fff8db;
+  opacity: 0;
+  filter: drop-shadow(0 0 13px rgba(255,233,177,.88));
+  pointer-events: none;
+}
+.letter-meteor::before {
+  content: "";
+  position: absolute;
+  width: 174px;
+  height: 3px;
+  right: 50%;
+  top: 50%;
+  transform: rotate(52deg);
+  transform-origin: right center;
+  background: linear-gradient(90deg,transparent,rgba(179,198,240,.08) 20%,rgba(220,232,249,.5) 68%,rgba(255,244,197,.96) 100%);
+  box-shadow: 0 0 9px rgba(189,207,245,.32);
+  border-radius: 100%;
+}
+.letter-meteor::after {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: radial-gradient(circle,rgba(255,250,210,.65),rgba(250,229,185,.24) 23%,transparent 72%);
+  filter: blur(3px);
+}
+.meteor-core { position: relative; z-index: 2; font-size: 18px; text-shadow: 0 0 12px #fff2ce,0 0 24px rgba(209,224,255,.8); }
+.meteor-flash {
+  position: absolute;
+  z-index: 3;
+  inset: -24px;
+  display: grid;
+  place-items: center;
+  font-size: 56px;
+  font-style: normal;
+  color: #fff7df;
+  text-shadow: 0 0 20px rgba(255,238,177,.95),0 0 42px rgba(180,213,248,.8);
+  opacity: 0;
+  transform: scale(.15);
+}
+.letter-journey.playing .letter-meteor { animation: letter-meteor-flight 6.6s linear both; }
+.letter-journey.playing .meteor-flash { animation: meteor-glint 6.6s ease-out both; }
+.letter-journey.delivered-state .letter-meteor { display: none; }
+@keyframes letter-meteor-flight {
+  0% { opacity: 0; left: -15%; top: 3%; }
+  12% { opacity: 1; left: -5%; top: 10%; }
+  88% { opacity: 1; left: 57%; top: 53%; }
+  100% { opacity: 0; left: 67%; top: 60%; }
+}
+@keyframes meteor-glint {
+  0%,42% { opacity: 0; transform: scale(.15) rotate(-10deg); }
+  49% { opacity: .95; transform: scale(1.14) rotate(13deg); }
+  56%,100% { opacity: 0; transform: scale(1.8) rotate(24deg); }
+}
+.secret-card-copy-front .front-line-birthday { text-align: center; font-size: 8px; letter-spacing: .08em; }
+#secretBookDialog .halo-heading {
+  top: 11%; left: 12%; width: 76%; height: auto; min-height: 6%;
+  padding: 7px 11px;
+  justify-content: center;
+  background: rgba(239,230,210,.87);
+  border: 1px solid rgba(129,111,80,.14);
+  border-radius: 3px;
+  color: #4b5d6c;
+  font-family: Georgia, "Songti SC", serif;
+  font-size: clamp(12px, 3.6cqw, 19px);
+  letter-spacing: .09em;
+  white-space: normal;
+}
+#secretBookDialog .halo-cover .halo-heading { top: 55%; font-size: 6cqw; }
+#secretBookDialog .halo-title-paper { display: none; }
+#secretBookDialog .halo-heading span { width: 100%; text-align: center; }
+@media (prefers-reduced-motion: reduce) {
+  .letter-journey.playing .letter-meteor { animation-duration: .2s; }
+  .letter-journey.playing .meteor-flash { animation-duration: .2s; }
+}
