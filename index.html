@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+  <meta name="theme-color" content="#0d1525" />
+  <meta name="description" content="可自由填写的九星生日礼物教学模板" />
+  <title>小奇点｜九星生日礼物教学版</title>
+  <link rel="stylesheet" href="styles.css?v=xiaoqidian-nine-v1" />
+    <link rel="stylesheet" href="public-star-sky.css?v=xiaoqidian-nine-v1" />
+</head>
+<body>
+  <div class="phone" id="phone">
+    <canvas class="background-sky" id="sky" aria-hidden="true"></canvas>
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="topbar reveal-stage reveal-1">
+      <div class="brand-wrap">
+        <p class="micro">A NIGHT JUST FOR YOU</p>
+        <p class="brand">A LITTLE STARRY SKY</p>
+      </div>
+      <div class="top-actions">
+        <button class="round-button achievement-button" id="achievementButton" aria-label="隐藏成就" title="隐藏成就"><span>✦</span><i id="achievementCount">0</i></button>
+        <button class="round-button" id="musicButton" aria-label="暂停或继续音乐" title="音乐开关"><span id="musicIcon">♪</span></button>
+        <button class="round-button" id="resetButton" aria-label="重置星空" title="重置进度">↺</button>
+      </div>
+    </header>
+
+    <main class="main-scene" id="mainScene">
+      <section class="intro-copy reveal-stage reveal-2" id="introCopy">
+        <p class="micro">FOR YOU, TONIGHT</p>
+        <h1><span id="customSiteTitle"></span><small class="sky-author" id="customAuthor"></small></h1>
+        <p class="opening-lines"><span class="opening-first"><span id="customWelcome"></span></span><br /><span class="opening-second"><span class="opening-before">先从第一颗星开始。</span><span class="opening-after">很快，星星就挂满了天。</span></span></p>
+      </section>
+
+      <section class="constellation reveal-stage reveal-3" id="constellation" aria-label="九颗可交互的星星">
+        <div class="sky-whisper" id="skyWhisper" aria-hidden="true"></div>
+        <div id="starLayer"></div>
+        <p class="gesture-hint" id="gestureHint">轻触第一颗星。</p>
+        <p class="ambient-hint" id="ambientHint">一起走进这片夜空。</p>
+      </section>
+
+      <section class="progress-panel reveal-stage reveal-4" aria-label="星空进度">
+        <div class="progress-meta">
+          <span>已点亮的星星</span>
+          <strong><span id="progressCount">0</span> / 9</strong>
+        </div>
+        <div class="progress-dots" id="progressDots" aria-hidden="true"></div>
+        <p class="progress-note" id="progressNote">第一颗星正在等你哦。</p>
+      </section>
+    </main>
+
+    <dialog class="memory-sheet" id="memoryDialog">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <button class="close-button" id="dialogClose" aria-label="关闭">×</button>
+      <div class="memory-content" id="memoryContent"></div>
+    </dialog>
+
+    <dialog class="achievement-sheet" id="achievementDialog">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <button class="close-button" id="achievementClose" aria-label="关闭">×</button>
+      <div class="achievement-content">
+        <p class="memory-index">HIDDEN ACHIEVEMENTS</p>
+        <h2 id="achievementTitle">夜空里的十个秘密</h2>
+        <div class="achievement-grid" id="achievementGrid"></div>
+        <p class="achievement-detail" id="achievementDetail">欢迎来到夜空秘密基地！<br />已发现的秘密会被这台设备收藏好哦。</p>
+      </div>
+    </dialog>
+
+    <dialog class="achievement-unlock" id="achievementUnlock" aria-hidden="true">
+      <div class="achievement-unlock-card">
+        <p id="achievementUnlockIndex">- 01 -</p>
+        <div class="achievement-unlock-icon" id="achievementUnlockIcon"></div>
+        <h3 id="achievementUnlockName"></h3>
+        <p class="achievement-unlock-hint" id="achievementUnlockHint"></p>
+      </div>
+    </dialog>
+
+    <section class="letter-journey" id="letterJourney" aria-hidden="true">
+      <button class="scene-back" id="letterBack" aria-label="返回主星空">←</button>
+      <div class="journey-sky" aria-hidden="true"></div>
+      <div class="journey-ground" aria-hidden="true"></div>
+
+      <div class="letter-meteor" aria-hidden="true"><span class="meteor-core">✦</span><i class="meteor-flash">✧</i></div>
+
+      <button class="delivered-letter" id="deliveredLetter" aria-label="打开信件"><span class="wax-seal">★</span><span class="letter-prompt">OPEN THE LETTER</span></button>
+      <p class="journey-caption" id="journeyCaption">流星从云层里送来了一封信</p>
+    </section>
+
+    <section class="letter-view" id="letterView" aria-hidden="true">
+      <button class="scene-back" id="letterViewBack" aria-label="把信纸收回信封并返回">←</button>
+      <div class="letter-stage">
+        <div class="letter-envelope-back" aria-hidden="true"></div>
+        <div class="letter-paper">
+          <p class="letter-kicker">A LETTER UNDER THE STARS</p>
+          <h2 id="customLetterTitle"></h2>
+          <div class="letter-body" id="letterBody"></div>
+        </div>
+        <div class="letter-envelope-front" aria-hidden="true"></div>
+        <div class="letter-envelope-flap" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="finale" id="finale" aria-hidden="true">
+      <canvas id="finalSky" aria-hidden="true"></canvas>
+      <button class="scene-back finale-back" id="finaleBack" aria-label="返回星空">←</button>
+      <div class="finale-copy" id="finaleCopy">
+        <p class="micro">UNDER THE STARRY SKY</p>
+        <h2 id="customFinaleTitle"></h2>
+      </div>
+      <p class="firework-hint" id="fireworkHint"></p>
+
+      <div class="cake-scene" id="cakeScene" aria-hidden="true">
+        <div class="birthday-bunting" id="birthdayBunting">
+          <span>HAPPY BIRTHDAY<br />TO YOU</span>
+          <div class="fairy-lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <button class="cake" id="cake" aria-label="点击蜡烛点亮">
+          <span class="cake-plate"></span>
+          <span class="cake-candles candles-top" id="cakeCandlesTop"></span>
+          <span class="cake-candles candles-mid" id="cakeCandlesMid"></span>
+          <span class="cake-top"><b></b></span><span class="cake-middle"><b></b></span><span class="cake-bottom"><b></b></span>
+          <small>26 支。先点礼炮，再点蜡烛。长按吹灭。</small>
+        </button>
+        <button class="blow-button" id="blowButton" aria-label="长按吹灭蜡烛"><span class="hold-ring"></span><b>长按吹灭蜡烛</b></button>
+      </div>
+
+      <div class="launcher-row" id="launcherRow" aria-hidden="true">
+        <button class="launcher launcher-a" data-launcher="0" aria-label="点击左侧朝天炮"><i></i><b></b></button>
+        <button class="launcher launcher-c" data-launcher="1" aria-label="点击右侧朝天炮"><i></i><b></b></button>
+      </div>
+
+      <p class="firework-counter" id="fireworkCounter" hidden></p>
+      <div class="finale-flash" id="finaleFlash" aria-hidden="true"></div>
+      <button class="gift-box" id="giftBox" hidden aria-label="打开礼物盒"><span class="gift-lid" aria-hidden="true"></span><span class="gift-body" aria-hidden="true"><b></b></span><span class="gift-ribbon" aria-hidden="true"></span></button>
+      <div class="gift-cards" id="giftCards" hidden>
+        <button class="gift-card" data-card="0" type="button" aria-label="第一张卡牌"><span class="gift-flip-inner"><span class="gift-card-face gift-card-front"><span class="card-front-text"></span></span><span class="gift-card-face gift-card-back"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 52V16"/><path d="M32 16 25 25"/><path d="M32 16 39 25"/><path d="M32 52 27.5 45.5"/><path d="M32 52 36.5 45.5"/></svg></span></span></span></button>
+        <button class="gift-card" data-card="1" type="button" aria-label="第二张卡牌"><span class="gift-flip-inner"><span class="gift-card-face gift-card-front"><span class="card-front-text"></span></span><span class="gift-card-face gift-card-back"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 52V16"/><path d="M32 16 25 25"/><path d="M32 16 39 25"/><path d="M32 52 27.5 45.5"/><path d="M32 52 36.5 45.5"/></svg></span></span></span></button>
+        <button class="gift-card" data-card="2" type="button" aria-label="第三张卡牌"><span class="gift-flip-inner"><span class="gift-card-face gift-card-front"><span class="card-front-text"></span></span><span class="gift-card-face gift-card-back"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 52V16"/><path d="M32 16 25 25"/><path d="M32 16 39 25"/><path d="M32 52 27.5 45.5"/><path d="M32 52 36.5 45.5"/></svg></span></span></span></button>
+      </div>
+
+      <form class="message-box" id="messageBox">
+        <label for="finalMessage">写一句留给星空的话</label>
+        <div><textarea id="finalMessage" maxlength="160" rows="1" wrap="off" autocomplete="off" placeholder="在这里说的话只有你和夜空知道哦…"></textarea><button type="submit">发送</button></div>
+        <p id="messageStatus">留言只保存在当前浏览器，不会被上传。</p>
+      </form>
+    </section>
+
+
+
+    <dialog class="reset-confirm-dialog" id="resetConfirmDialog" aria-labelledby="resetConfirmTitle">
+      <h2 id="resetConfirmTitle">咦，确定要重置进度吗？</h2>
+      <div class="reset-confirm-actions">
+        <button type="button" id="resetCancel" autofocus>先不重置</button>
+        <button type="button" id="resetConfirm">确定重置</button>
+      </div>
+    </dialog>
+
+
+    <div class="toast" id="toast" role="status" aria-live="polite" popover="manual"></div>
+
+    <audio id="birthdaySong" preload="auto" playsinline loop><source src="assets/fen.mp3" type="audio/mpeg" /></audio>
+    <audio id="birthdayMusic" preload="metadata" playsinline loop><source src="assets/shengri-kuaile.mp3" type="audio/mpeg" /></audio>
+  </div>
+  <script src="config.js"></script>
+  <script src="zodiac-patterns.js"></script>
+  <script src="script.js?v=xiaoqidian-nine-v1-1"></script>
+</body>
+</html>
