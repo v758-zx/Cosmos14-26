@@ -148,7 +148,7 @@
     || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
   // Public teaching edition: all gift-specific content lives in config.js.
-  document.title = `${C.siteTitle} · 小奇点`;
+  document.title = `${C.siteTitle}`;
   $('#customSiteTitle').textContent = C.siteTitle;
   $('#customAuthor').textContent = `By ${C.author}`;
   $('#customWelcome').textContent = C.welcome;
